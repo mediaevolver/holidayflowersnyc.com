@@ -198,6 +198,47 @@ Image: /images/plants/succulent.jpg
 - Minimal JavaScript bundle with code splitting
 - Fast loading with prefetched assets
 
+## Content Management System (CMS)
+
+The site includes a built-in CMS for easy product management without requiring a database.
+
+### Admin Access
+
+1. **Login URL**: `/admin/login`
+2. **Default Password**: `admin123` (change via `ADMIN_PASSWORD` environment variable)
+3. **Dashboard**: `/admin`
+
+### Features
+
+- **Product Management**: Add, edit, and delete products across all categories
+- **Image Upload**: Upload product images directly through the admin interface
+- **Category Management**: Organize products by categories and tags
+- **Inventory Status**: Mark products as in-stock or out-of-stock
+- **Featured Products**: Highlight products on the homepage
+- **Price Management**: Set prices for plants and rental rates for rental items
+
+### How It Works
+
+- **File-Based**: No database required - all data stored in TypeScript files
+- **Real-Time Updates**: Changes immediately reflect on the live site
+- **Image Storage**: Images uploaded to `/public/images/` directory
+- **Type Safety**: All product data validated with TypeScript interfaces
+- **Vercel Compatible**: Fully works with Vercel's serverless deployment
+
+### Security
+
+- Simple password-based authentication
+- Admin routes protected with authentication middleware
+- Environment variable configuration for production security
+
+### Usage
+
+1. Navigate to `/admin/login` and enter the admin password
+2. Use the dashboard to manage products by category
+3. Upload images and update product information
+4. Changes are immediately saved to the data files
+5. Redeploy to Vercel to see updates live
+
 ## License
 
 Private project for Holiday Flowers NYC. 
