@@ -12,6 +12,8 @@ import { type Product } from '@/lib/cart-context';
 import AddToCart from '@/components/shared/AddToCart';
 import Lightbox from '@/components/ui/Lightbox';
 
+
+//
 interface RentalCardProps {
   rental: Rental;
 }
