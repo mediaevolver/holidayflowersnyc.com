@@ -1,37 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Handle CORS and OPTIONS requests
-export async function OPTIONS(request: NextRequest) {
-  return new NextResponse(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
-}
-
 export async function POST(request: NextRequest) {
+  console.log('Auth POST request received');
+  
   try {
-    const { password } = await request.json();
+    const body = await request.json();
+    const { password } = body;
+    
+    console.log('Request body:', { password: password ? '[PROVIDED]' : '[MISSING]' });
     
     // Simple password check - in production, use environment variable
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
     
-    console.log('Admin password check:', { 
-      provided: password, 
+    console.log('Password comparison:', { 
+      provided: password,
       expected: adminPassword,
-      envSet: !!process.env.ADMIN_PASSWORD 
+      match: password === adminPassword
     });
     
     if (password === adminPassword) {
+      console.log('Authentication successful');
       return NextResponse.json({ success: true });
     } else {
+      console.log('Authentication failed');
       return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
     }
   } catch (error) {
-    console.error('Auth error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('Auth API error:', error);
+    return NextResponse.json({ 
+      error: 'Internal server error', 
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 }

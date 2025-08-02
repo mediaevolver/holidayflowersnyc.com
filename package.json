@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:local": "NEXT_PUBLIC_ASSET_PREFIX= NEXT_PUBLIC_BASE_PATH= next build",
-    "build:production": "NEXT_PUBLIC_ASSET_PREFIX= NEXT_PUBLIC_BASE_PATH= next build",
-    "build:custom-domain": "NEXT_PUBLIC_ASSET_PREFIX=https://holidayflowersnyc.com NEXT_PUBLIC_BASE_PATH= next build",
+    "build:static": "STATIC_EXPORT=true NEXT_PUBLIC_ASSET_PREFIX= NEXT_PUBLIC_BASE_PATH= next build",
+    "build:static-production": "STATIC_EXPORT=true NEXT_PUBLIC_ASSET_PREFIX=https://mediaevolver.com/holidayflowers NEXT_PUBLIC_BASE_PATH=/holidayflowers next build",
+    "build:vercel": "next build",
     "start": "next start",
     "lint": "next lint"
   },
