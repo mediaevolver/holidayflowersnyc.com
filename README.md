@@ -36,18 +36,24 @@ NEXT_PUBLIC_BASE_PATH=/holidayflowers
 
 ### Build Scripts
 
-Use the predefined build scripts for different deployment types:
+Different build configurations for various deployment scenarios:
 
+#### **For Vercel Deployment (with CMS/Admin features):**
 ```bash
-# Local development build (no prefixing)
-npm run build:local
-
-# Production build (mediaevolver.com/holidayflowers)
-npm run build:production  
-
-# Custom domain build
-npm run build:custom-domain
+# Standard Vercel build (enables API routes for admin functionality)
+npm run build:vercel
 ```
+
+#### **For Static Hosting (cPanel, Netlify, GitHub Pages, etc.):**
+```bash
+# Local static build (no prefixing)
+npm run build:static
+
+# Production static build (mediaevolver.com/holidayflowers)
+npm run build:static-production
+```
+
+**⚠️ Important**: The CMS admin features require server-side functionality and only work with Vercel deployment (`npm run build:vercel`). For static hosting, the admin panel will not function, but the main website will work perfectly.
 
 ### Deployment Script
 
